@@ -1,7 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home</h1>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore corrupti impedit nihil enim commodi doloribus
-    harum nemo optio et nesciunt, reprehenderit officiis mollitia sit qui iusto possimus aperiam velit sed!</p>
+
+<main class="container py-5">
+    <section class="card card-body">
+
+    <h1 class="display-1 text-center">PET HUB</h1>
+    <p style="font-size: 1.2rem; margin-top: 1.5rem;">
+        En PetSociety, entendemos que tus mascotas no son solo animales: son familia. Por eso hemos creado una plataforma sencilla, moderna y efectiva para ayudarte a cuidar de ellos como se merecen.
+    </p>
+    <p style="font-size: 1.1rem; margin-top: 1rem;">
+        Gestiona todas tus mascotas desde un solo lugar: registra sus datos, programa citas veterinarias, lleva un seguimiento del estado de cada una, y mantente al tanto de las citas pendientes o completadas.  
+        Olvídate del estrés de recordar fechas y notas en papel. PetSociety te lo pone fácil.
+    </p>
+    <p style="font-size: 1.2rem; font-weight: bold; margin-top: 2rem;">
+        ¡Empieza hoy a cuidar de tus mascotas como verdaderos profesionales!
+    </p>
+
+    <div class="text-center">
+        <a class="btn btn-secondary" href="/signin/">
+            SignIn
+        </a>
+        <a class="btn btn-dark" href="/signup/">
+            SignUp
+        </a>
+    </div>
+</section>
+</main>
+
 {% endblock %}

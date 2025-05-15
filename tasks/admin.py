@@ -1,6 +1,5 @@
 from django.contrib import admin
- # from .models import Tasks
+from .models import Appointment, CustomUser
 
-# Register your models here.
-
-# admin.site.register(Tasks)
+admin.site.register(Appointment)
+admin.site.register(CustomUser)

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ <main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1>Appoiments Pending</h1>
+            <ul class="list-group">
+            {% for cita in citas %}
+            <li class="list-group-item">
+            <a href="{% url 'cita_detalle' cita.id %}">
+            <h1>{{ cita.petname }}</h1>
+            {% if cita.importan %}
+            <strong>{{ cita.status }}</strong>
+            {% else %}
+            {{ cita.status }}
+            {% endif %}
+            <p>{{ cita.description }}</p>
+            <p>{{ cita.created_by }}</p>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+        </div>
+    </div>
+ </main>
+{% endblock %}

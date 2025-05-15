@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form action="/citas/create" method="POST" class="card card-body">
+            <h1>Schedule Your Appointment</h1>
+            {{error}}
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary" type="submit">
+                Save
+            </button>
+
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

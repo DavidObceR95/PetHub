@@ -1,17 +1,63 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<h1>SignUp</h1>
 
-{{error}}
-
-<form action="/signup/" method="post">
-{% csrf_token %}
-{{form.as_p}}
-    <button>
-        SignUp
-    </button>
-
-</form>
+<main class="container">
+   <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            <form action="/signup/" method="post" class="card card-body ">
+            <h1 class="text-center" >SignUp</h1>
+            {{error}}
+            {% csrf_token %}
+                <div class="mb-3">
+                    <label for="">username:</label>
+                    <input type="text" name="username" id="username" class="from-control"
+                    placeholder="Write your username" >
+                </div>
+                <div class="mb-3">
+                    <label for="">Email address:</label>
+                    <input type="text" name="email" id="email" class="from-control"
+                    placeholder="Write your email" >
+                </div>
+                <div class="mb-3">
+                    <label for="">First Name:</label>
+                    <input type="text" name="first_name" id="first_name" class="from-control"
+                    placeholder="Write your First Name" >
+                </div>
+                <div class="mb-3">
+                    <label for="">Lats Name:</label>
+                    <input type="text" name="last_name" id="last_name" class="from-control"
+                    placeholder="Write your Last Name" >
+                </div>
+                <div class="mb-3">
+                    <label for="">Password:</label>
+                    <input type="text" name="password" id="password" class="from-control"
+                    placeholder="Write your Password" >
+                </div>
+                <div class="mb-3">
+                    <label for="">Repeat Password:</label>
+                    <input type="text" name="password1" id="password1" class="from-control"
+                    placeholder="Confirm your Password" >
+                </div>
+                <div class="mb-3">
+                    <label for="">Phone:</label>
+                    <input type="text" name="phone" id="phone" class="from-control"
+                    placeholder="Write your Phone" >
+                </div>
+                <div class="mb-3">
+                    <label for="role">Role:</label>
+                    <select name="role" id="role" class="form-control">
+                        <option value="admin">Admin</option>
+                        <option value="user" selected>User</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">
+                    SignUp
+                </button>
+            </form>
+        </div> 
+   </div>
+</main>
 
 {%  endblock %}
 

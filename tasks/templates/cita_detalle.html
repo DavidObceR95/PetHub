@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container">
+  <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <h1>{{ cita.petname }}</h1>
+
+        {% if error %}
+          <p class="text-danger">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+           {% csrf_token %}
+           {{ form.as_p }}
+           <button class="btn btn-primary">Update</button>
+        </form>
+
+        <form action="{% url 'complete_cita' cita.id %}" method="POST" class="mt-2">
+           {% csrf_token %}
+           <button class="btn btn-success">Complete</button>
+        </form>
+
+        <form action="{% url 'delete_cita' cita.id %}" method="POST" class="mt-2">
+           {% csrf_token %}
+           <button class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+  </div>
+</main>
+{% endblock %}
