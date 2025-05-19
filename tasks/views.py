@@ -59,7 +59,7 @@ def signin(request):
         CustomUser = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
         if CustomUser is None:
-            return render(request, 'signin.html', {  # <- corregido
+            return render(request, 'signin.html', {
                 'form': AuthenticationForm,
                 'error': 'Username or password is incorrect'
             })
