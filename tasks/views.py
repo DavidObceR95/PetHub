@@ -51,7 +51,7 @@ def signup(request):
 # Ingreso de usuarios
 def signin(request):
     if request.method == 'GET':
-        return render(request, 'signin.html', {  # <- corregido
+        return render(request, 'signin.html', {
             'form': AuthenticationForm
         })
     else:
