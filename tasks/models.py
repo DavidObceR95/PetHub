@@ -30,11 +30,13 @@ class Appointment(models.Model):
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled'),
     )
-    petname = models.CharField(max_length=100) 
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     created_by = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Cita para {self.petname} el {self.date}"
+        return f"Cita para {self.pet.name} el {self.date}"
+    
+    

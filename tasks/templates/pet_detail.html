@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white text-center">
+          <h2 class="mb-0">Edit Pet: {{ pet.name }}</h2>
+        </div>
+        <div class="card-body">
+          {% if error %}
+            <div class="alert alert-danger" role="alert">
+              {{ error }}
+            </div>
+          {% endif %}
+          <form method="POST" class="mb-3" novalidate>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">
+              Update
+            </button>
+          </form>
+
+          <form method="POST" action="{% url 'delete_pet' pet.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100" onclick="return confirm('Are you sure you want to delete this pet?');">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -1,13 +1,14 @@
 from django.forms import ModelForm, CharField, PasswordInput
 from .models import Appointment
 from django.contrib.auth import get_user_model
+from .models import Pet
 
 User = get_user_model()
 
 class createcitasform(ModelForm):
     class Meta:
         model =  Appointment
-        fields = ['petname', 'description']
+        fields = ['pet', 'description']
 
 
 class CreateCustomUser(ModelForm):
@@ -20,3 +21,13 @@ class CreateCustomPublicUser(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name', 'password', 'password1', 'phone', 'role']
+
+class PetForm(ModelForm):
+    class Meta:
+        model = Pet
+        fields = ['name', 'species', 'breed', 'age']
+
+class AppointmentForm(ModelForm):
+    class Meta:
+        model = Appointment
+        fields = ['pet', 'description']

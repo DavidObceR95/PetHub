@@ -1,27 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
- <main class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <h1>Appoiments Pending</h1>
-            <ul class="list-group">
-            {% for cita in citas %}
-            <li class="list-group-item">
-            <a href="{% url 'cita_detalle' cita.id %}">
-            <h1>{{ cita.petname }}</h1>
-            {% if cita.importan %}
-            <strong>{{ cita.status }}</strong>
-            {% else %}
-            {{ cita.status }}
-            {% endif %}
-            <p>{{ cita.description }}</p>
-            <p>{{ cita.created_by }}</p>
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-        </div>
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <h2 class="mb-4 text-center">Appointments Pending</h2>
+      <ul class="list-group shadow-sm">
+        {% for cita in citas %}
+          <li class="list-group-item">
+            <a href="{% url 'cita_detalle' cita.id %}" class="text-decoration-none text-dark d-block">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-1">{{ cita.petname }}</h5>
+                {% if cita.importan %}
+                  <span class="badge bg-danger">{{ cita.status }}</span>
+                {% else %}
+                  <span class="badge bg-secondary">{{ cita.status }}</span>
+                {% endif %}
+              </div>
+              <p class="mb-1">{{ cita.description }}</p>
+              <small class="text-muted">Created by: {{ cita.created_by }}</small>
+            </a>
+          </li>
+        {% empty %}
+          <li class="list-group-item text-center text-muted">
+            No pending appointments.
+          </li>
+        {% endfor %}
+      </ul>
     </div>
- </main>
+  </div>
+</main>
 {% endblock %}

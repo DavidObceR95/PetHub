@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', views.home, name='home'),
     path ('signup/', views.signup, name='signup' ),
+    # Appoiments CRUD
     path ('citas/', views.citas, name='citas'),
     path ('citas/create', views.create_citas, name='create_citas'),
     path ('citas/<int:cita_id>/', views.cita_detalle, name='cita_detalle'),
@@ -29,5 +30,10 @@ urlpatterns = [
     path ('citas/<int:cita_id>/delete', views.Delete_cita, name='delete_cita'),
     path ('logout/', views.signout , name='logout'),
     path('signin/', views.signin , name='signin'),
+    # Pet CRUD
+    path('pets/', views.pets, name='pets'),
+    path('pets/create/', views.create_pet, name='create_pet'),
+    path('pets/<int:pet_id>/', views.pet_detail, name='pet_detail'),
+    path('pets/<int:pet_id>/delete/', views.delete_pet, name='delete_pet'),
 ]
- 
+    

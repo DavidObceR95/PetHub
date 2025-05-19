@@ -1,22 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<main class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <form action="/citas/create" method="POST" class="card card-body">
-            <h1>Schedule Your Appointment</h1>
-            {{error}}
-            {% csrf_token %}
-            {{form.as_p}}
-            <button class="btn btn-primary" type="submit">
-                Save
-            </button>
-
-            </form>
+<main class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      {% if no_pets %}
+        <div class="alert alert-warning text-center" role="alert">
+          <strong>Attention!</strong> You need! 
+          <a href="{% url 'create_pet' %}" class="alert-link">Add a pet</a> 
+          before scheduling an appointment.
         </div>
+      {% else %}
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white text-center">
+            <h2 class="mb-0">Schedule Appointment</h2>
+          </div>
+          <div class="card-body">
+            {% if error %}
+              <div class="alert alert-danger" role="alert">
+                {{ error }}
+              </div>
+            {% endif %}
+            <form action="{% url 'create_citas' %}" method="POST" novalidate>
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary w-100 mt-3">
+                Save
+              </button>
+            </form>
+          </div>
+        </div>
+      {% endif %}
     </div>
+  </div>
 </main>
-
 {% endblock %}
